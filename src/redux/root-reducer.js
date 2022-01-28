@@ -1,7 +1,7 @@
 import {combineReducers} from 'redux'
-import { searchMonster } from './monster/monster.action'
-import { rootReducer } from 'react'
+import { searchReducer } from './monster/monster.reducer'
+//import { userReducer } from 'react'
 const rootReducer= combineReducers({
     search:searchReducer
 })
-export default rootreducer
+export default rootReducer

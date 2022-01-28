@@ -9,7 +9,7 @@ class Home extends React.Component{
         super();
         this.state = {
             monsters: [],
-            searchField: ''
+            //searchField: ''
         }
     }
     componentDidMount(){
@@ -26,8 +26,9 @@ class Home extends React.Component{
    
     render(){
         
-        const {monsters,searchField } = this.state
-        const filteredMonsters = monsters.filter((monster) => monster.name.toLowerCase().includes(searchField.toLowerCase()))
+        const {monsters } = this.state
+        const{searchName}=this.props
+        const filteredMonsters = monsters.filter((monster) => monster.name.toLowerCase().includes(searchName.toLowerCase()))
         return(
             <>
             <div className='App'>
