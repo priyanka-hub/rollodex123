@@ -2,7 +2,8 @@ import React from 'react'
 import CardList from '../../components/Card-List/Card-List.component';
 import Search from '../../components/Search/Search.component';
 import './Home.styles.css'
-
+import {connect} from 'react-redux'
+import { searchMonster } from '../../redux/monster/monster.action';
 class Home extends React.Component{
     constructor(){
         super();
@@ -18,7 +19,9 @@ class Home extends React.Component{
     }
 
     handleSearch = (event)=>{
-        this.setState({searchField:event.target.value})
+        const{searchField}=this.props
+        searchField(event.target.value)
+        //this.setState({searchField:event.target.value})
     }
    
     render(){
@@ -38,5 +41,11 @@ class Home extends React.Component{
         )
     }
 }
-
-export default Home
+const mapDispatchToProps=dispatch=>({ searchField:username => dispatch(searchMonster(username))
+})
+   const mapStateToProps=state=>(
+       {
+           searchName:state.search.searchField
+       }
+   )
+export default connect(mapStateToProps,mapDispatchToProps)(Home)//Higher order components
